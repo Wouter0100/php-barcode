@@ -60,18 +60,3 @@ define ("GUARDS", serialize (array(
                                   'middle' => "01010",
                                   'end' => "101",
                                       )));
-
-$PARITY_KEY   = unserialize(PARITY_KEY);
-$LEFT_PARITY  = unserialize(LEFT_PARITY);
-$RIGHT_PARITY = unserialize(RIGHT_PARITY);
-$GUARD        = unserialize(GUARDS);
-
-function ean_checksum($ean){
-  $ean=(string)$ean;
-  $even=true; $esum=0; $osum=0;
-  for ($i=strlen($ean)-1;$i>=0;$i--){
-	if ($even) $esum+=$ean[$i];	else $osum+=$ean[$i];
-	$even=!$even;
-  }
-  return (10-((3*$esum+$osum)%10))%10;
-}
