@@ -1,6 +1,6 @@
 <?php
 //autoload
-include("ean.php");
+include("EAN13.php");
 
 class Barcode
 {
