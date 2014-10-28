@@ -1,6 +1,6 @@
 <?php
 
-class EAN13 extends Barcode {
+class EAN13 {
 
     private $PARITY_KEY = array(
         0 => "000000",
@@ -61,6 +61,9 @@ class EAN13 extends Barcode {
         'middle' => "01010",
         'end'    => "101",
     );
+
+    private $number;
+    private $scale;
 
     private $_key;
     private $_checksum;
@@ -227,7 +230,7 @@ class EAN13 extends Barcode {
             if ($i == 0 || $i == 6) {
                 $x += $kerning * 0.5;
             }
-            
+
             $x += $kerning;
         }
     }
