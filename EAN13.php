@@ -174,11 +174,11 @@ class EAN13 extends Barcode {
     protected function _drawBars() {
         $bar_color = imagecolorallocate($this->_image, 0x00, 0x00, 0x00);
 
-        define("MAX", $this->_height * 0.025);
-        define("FLOOR", $this->_height * 0.825);
-        define("WIDTH", $this->scale);
+        $max = $this->_height * 0.025;
+        $floor = $this->_height * 0.825;
+        $width = $this->scale;
 
-        $x = ($this->_height * 0.2) - WIDTH;
+        $x = ($this->_height * 0.2) - $width;
 
         foreach ($this->_bars as $bar) {
             $tall = 0;
@@ -189,9 +189,9 @@ class EAN13 extends Barcode {
 
             for ($i = 1; $i <= strlen($bar); $i++) {
                 if (substr($bar, $i - 1, 1) === '1') {
-                    imagefilledrectangle($this->_image, $x, MAX, $x + WIDTH, FLOOR + $tall, $bar_color);
+                    imagefilledrectangle($this->_image, $x, $max, $x + $width, $floor + $tall, $bar_color);
                 }
-                $x += WIDTH;
+                $x += $width;
             }
         }
     }
