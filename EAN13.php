@@ -217,15 +217,17 @@ class EAN13 extends Barcode {
 
         $text_color = imagecolorallocate($this->_image, 0x00, 0x00, 0x00);
 
-        $font = dirname(__FILE__) . "/" . "FreeSansBold.ttf";
-        $fontsize = $this->scale * (7);
+        $font = dirname(__FILE__) . '/' . 'FreeSansBold.ttf';
+        $fontsize = $this->scale * 7;
         $kerning = $fontsize * 1;
 
         for ($i = 0; $i < strlen($this->number); $i++) {
             imagettftext($this->_image, $fontsize, 0, $x, $y, $text_color, $font, $this->number[$i]);
+
             if ($i == 0 || $i == 6) {
                 $x += $kerning * 0.5;
             }
+            
             $x += $kerning;
         }
     }
